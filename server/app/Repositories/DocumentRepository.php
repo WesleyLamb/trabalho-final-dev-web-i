@@ -2,11 +2,13 @@
 
 namespace App\Repositories;
 
-use League\CommonMark\Renderer\DocumentRendererInterface;
+use App\Models\Document;
+use App\Repositories\Contracts\DocumentRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
-class DocumentRepository implements DocumentRendererInterface {
-    public function index()
+class DocumentRepository implements DocumentRepositoryInterface {
+    public function index(): Collection
     {
-        return 'DocumentRepository@index';
+        return Document::get();
     }
 }
