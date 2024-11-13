@@ -21,6 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'documents'], function() {
-        Route::get('/', [DocumentController::class, 'index']);
+        Route::get('', [DocumentController::class, 'index']);
+        Route::post('', [DocumentController::class, 'store']);
+        Route::group(['prefix' => '{id}'], function() {
+            Route::get('', [DocumentController::class, 'show']);
+            Route::put('', [DocumentController::class, 'update']);
+        });
     });
 });

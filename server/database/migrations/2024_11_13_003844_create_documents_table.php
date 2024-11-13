@@ -17,7 +17,6 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique()->default(DB::raw('gen_random_uuid()'));
-            $table->foreignId('author_id');
 
             $table->integer('publication_year');
             $table->string('title');
@@ -28,8 +27,6 @@ return new class extends Migration
 
             $table->softDeletesTz();
             $table->timestampsTz();
-
-            $table->foreign('author_id')->references('id')->on('authors');
         });
     }
 
