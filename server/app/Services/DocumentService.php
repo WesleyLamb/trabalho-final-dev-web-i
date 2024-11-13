@@ -6,6 +6,7 @@ use App\Http\Resources\DocumentAbstractResource;
 use App\Repositories\Contracts\DocumentRepositoryInterface;
 use App\Services\Contracts\DocumentServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class DocumentService implements DocumentServiceInterface {
     public DocumentRepositoryInterface $documentRepository;
@@ -15,7 +16,7 @@ class DocumentService implements DocumentServiceInterface {
         $this->documentRepository = $documentRepository;
     }
 
-    public function index(Request $request)
+    public function index(Request $request): AnonymousResourceCollection
     {
         return DocumentAbstractResource::collection($this->documentRepository->index());
     }

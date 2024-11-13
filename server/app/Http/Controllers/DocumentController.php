@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\Contracts\DocumentServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class DocumentController extends Controller
 {
@@ -14,7 +15,7 @@ class DocumentController extends Controller
         $this->documentService = $documentService;
     }
 
-    public function index(Request $request)
+    public function index(Request $request): AnonymousResourceCollection
     {
         return $this->documentService->index($request);
     }
