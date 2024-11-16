@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +15,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Artisan::call('db:seed', [
+            '--class' => AuthorSeeder::class,
+        ]);
+        Artisan::call('db:seed', [
+            '--class' => DocumentSeeder::class,
+        ]);
+        Artisan::call('db:seed', [
+            '--class' => DocumentAuthorSeeder::class,
+        ]);
+        // $this->call(AuthorSeeder::class);
+        // $this->call(DocumentSeeder::class);
+        // $this->call(DocumentAuthorSeeder::class);
+        // $this->call(DocumentSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

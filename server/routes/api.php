@@ -26,6 +26,7 @@ Route::group(['prefix' => 'v1'], function () {
         Route::group(['prefix' => '{id}'], function() {
             Route::get('', [DocumentController::class, 'show']);
             Route::put('', [DocumentController::class, 'update']);
+            Route::delete('', [DocumentController::class, 'destroy']);
         });
     });
 });

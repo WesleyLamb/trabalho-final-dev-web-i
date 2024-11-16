@@ -39,4 +39,9 @@ class DocumentService implements DocumentServiceInterface {
     {
         return new DocumentResource($this->documentRepository->update($request->route('id'), UpdateDocumentDTO::createFromRequest($request)));
     }
+
+    public function destroy(Request $request): void
+    {
+        $this->documentRepository->destroy($request->route('id'));
+    }
 }

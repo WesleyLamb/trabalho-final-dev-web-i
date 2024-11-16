@@ -12,5 +12,5 @@ interface DocumentRepositoryInterface {
     public function store(StoreDocumentDTO $data): Document;
     public function getByIdOrFail(string $documentId): Document;
     public function update(string $documentId, UpdateDocumentDTO $data): Document;
-    // public function destroy($id);
+    public function destroy($id): void;
 }

@@ -36,4 +36,10 @@ class DocumentController extends Controller
     {
         return $this->documentService->update($request);
     }
+
+    public function destroy(Request $request)
+    {
+        $this->documentService->destroy($request);
+        return response()->noContent();
+    }
 }

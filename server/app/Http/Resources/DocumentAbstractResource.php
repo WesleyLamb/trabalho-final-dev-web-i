@@ -16,7 +16,10 @@ class DocumentAbstractResource extends JsonResource
     {
         return [
             'id' => $this->uuid,
-
+            'title' => $this->title,
+            'subtitle' => $this->subtitle,
+            'publication_year' => $this->publication_year,
+            'author' => new AuthorsAbstractResource($this->principalAuthor),
         ];
     }
 }

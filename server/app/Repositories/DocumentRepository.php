@@ -61,4 +61,10 @@ class DocumentRepository implements DocumentRepositoryInterface {
         $document->save();
         return $document->refresh();
     }
+
+    public function destroy($id): void
+    {
+        $document = $this->getByIdOrFail($id);
+        $document->delete();
+    }
 }

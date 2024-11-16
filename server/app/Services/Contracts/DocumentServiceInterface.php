@@ -12,4 +12,5 @@ interface DocumentServiceInterface {
     public function store(StoreDocumentRequest $request): DocumentResource;
     public function show(Request $request): DocumentResource;
     public function update(Request $request): DocumentResource;
+    public function destroy(Request $request): void;
 }
