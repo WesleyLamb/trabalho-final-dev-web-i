@@ -57,6 +57,6 @@ class User extends Authenticatable
             $permissions[] = Str::substr($permission, 0, $pos);
         }
         $permissions[] = $permission;
-        return in_array($this->permissions->pluck('permission'), $permissions);
+        return in_array($permission, $permissions);
     }
 }

@@ -6,13 +6,13 @@ use App\DTO\StoreDocumentDTO;
 use App\DTO\UpdateDocumentDTO;
 use App\Models\Document;
 use App\Repositories\Contracts\DocumentRepositoryInterface;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 
 class DocumentRepository implements DocumentRepositoryInterface {
-    public function getAll(): Collection
+    public function getAll(): LengthAwarePaginator
     {
-        return Document::get();
+        return Document::paginate()->withQueryString();
     }
 
     public function store(StoreDocumentDTO $data): Document

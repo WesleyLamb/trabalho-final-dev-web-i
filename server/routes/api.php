@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\DocumentController;
-use App\Http\Resources\UserResource;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\AuthorController;
+use App\Http\Controllers\Api\DocumentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +52,13 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('', [DocumentController::class, 'index']);
         Route::group(['prefix' => '{id}'], function() {
             Route::get('', [DocumentController::class, 'show']);
+        });
+    });
+
+    Route::group(['prefix' => 'authors'], function() {
+        Route::get('', [AuthorController::class, 'index']);
+        Route::group(['prefix' => '{id}'], function() {
+            Route::get('', [AuthorController::class, 'show']);
         });
     });
 });

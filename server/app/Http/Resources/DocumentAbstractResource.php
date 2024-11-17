@@ -19,7 +19,7 @@ class DocumentAbstractResource extends JsonResource
             'title' => $this->title,
             'subtitle' => $this->subtitle,
             'publication_year' => $this->publication_year,
-            'author' => new AuthorsAbstractResource($this->principalAuthor),
+            'author' => new AuthorAbstractResource($this->principalAuthor),
         ];
     }
 }

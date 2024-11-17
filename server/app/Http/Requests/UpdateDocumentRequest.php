@@ -13,7 +13,7 @@ class UpdateDocumentRequest extends FormRequest
      */
     public function authorize()
     {
-        return request()->user()->hasPermissions('documents:update');
+        return request()->user()->hasPermission('documents:update');
     }
 
     /**

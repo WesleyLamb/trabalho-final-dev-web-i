@@ -13,7 +13,7 @@ class StoreAuthorRequest extends FormRequest
      */
     public function authorize()
     {
-        return request()->user()->hasPermissions('authors:store');
+        return request()->user()->hasPermission('authors:store');
     }
 
     /**

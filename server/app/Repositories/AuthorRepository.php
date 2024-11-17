@@ -2,22 +2,20 @@
 
 namespace App\Repositories;
 
-use App\DTO\StoreAuthorDTO as DTOStoreAuthorDTO;
-use App\DTO\UpdateAuthorDTO as DTOUpdateAuthorDTO;
+use App\DTO\StoreAuthorDTO;
+use App\DTO\UpdateAuthorDTO;
 use App\Models\Author;
 use App\Repositories\Contracts\AuthorRepositoryInterface;
-use App\Repositories\Contracts\StoreAuthorDTO;
-use App\Repositories\Contracts\UpdateAuthorDTO;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class AuthorRepository implements AuthorRepositoryInterface
 {
-    public function getAll(): Collection
+    public function getAll(): LengthAwarePaginator
     {
-        return Author::get();
+        return Author::paginate()->withQueryString();
     }
 
-    public function store(DTOStoreAuthorDTO $data): Author
+    public function store(StoreAuthorDTO $data): Author
     {
         $author = new Author();
 
@@ -33,7 +31,7 @@ class AuthorRepository implements AuthorRepositoryInterface
         return Author::where('uuid', $authorId)->firstOrFail();
     }
 
-    public function update(string $authorId, DTOUpdateAuthorDTO $data): Author
+    public function update(string $authorId, UpdateAuthorDTO $data): Author
     {
         $author = $this->getByIdOrFail($authorId);
 

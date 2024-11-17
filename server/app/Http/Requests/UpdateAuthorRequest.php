@@ -13,7 +13,7 @@ class UpdateAuthorRequest extends FormRequest
      */
     public function authorize()
     {
-        return request()->user()->hasPermissions('authors:update');
+        return request()->user()->hasPermission('authors:update');
     }
 
     /**
