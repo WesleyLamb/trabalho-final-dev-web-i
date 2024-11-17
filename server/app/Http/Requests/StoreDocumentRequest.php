@@ -14,7 +14,7 @@ class StoreDocumentRequest extends FormRequest
      */
     public function authorize()
     {
-        return request()->user()->permissions->;
+        return request()->user()->hasPermissions('documents:create');
     }
 
     /**

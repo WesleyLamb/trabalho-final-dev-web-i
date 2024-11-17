@@ -27,7 +27,12 @@ class UserPermissionSeeder extends Seeder
 
         UserPermission::create([
             'user_id' => $user2->id,
-            'permission_id' => Permission::where('permission', 'author')->first()->id,
+            'permission_id' => Permission::where('permission', 'authors')->first()->id,
+        ]);
+
+        UserPermission::create([
+            'user_id' => $user2->id,
+            'permission_id' => Permission::where('permission', 'documents')->first()->id,
         ]);
     }
 }

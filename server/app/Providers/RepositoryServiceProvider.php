@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\AuthorRepository;
+use App\Repositories\Contracts\AuthorRepositoryInterface;
 use App\Repositories\Contracts\DocumentRepositoryInterface;
 use App\Repositories\DocumentRepository;
 use Illuminate\Support\Facades\App;
@@ -19,6 +21,11 @@ class RepositoryServiceProvider extends ServiceProvider
         App::bind(
             DocumentRepositoryInterface::class,
             DocumentRepository::class
+        );
+
+        App::bind(
+            AuthorRepositoryInterface::class,
+            AuthorRepository::class
         );
     }
 

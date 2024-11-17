@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDocumentRequest extends FormRequest
+class UpdateAuthorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateDocumentRequest extends FormRequest
      */
     public function authorize()
     {
-        return request()->user()->hasPermissions('documents:update');
+        return request()->user()->hasPermissions('authors:update');
     }
 
     /**
@@ -24,10 +24,8 @@ class UpdateDocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['sometimes', 'string', 'max:255'],
-            'subtitle' => ['sometimes', 'string', 'nullable', 'max:255'],
-            'publication_year' => ['sometimes', 'integer', 'max:'.date('Y')],
-            'abstract' => ['sometimes', 'nullable', 'string'],
+            'name' => ['sometimes', 'string', 'max:255'],
+            'email' => ['sometimes', 'email', 'max:255'],
         ];
     }
 }

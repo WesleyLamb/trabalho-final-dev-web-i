@@ -8,7 +8,7 @@ use App\Models\Document;
 use Illuminate\Database\Eloquent\Collection;
 
 interface DocumentRepositoryInterface {
-    public function index(): Collection;
+    public function getAll(): Collection;
     public function store(StoreDocumentDTO $data): Document;
     public function getByIdOrFail(string $documentId): Document;
     public function update(string $documentId, UpdateDocumentDTO $data): Document;

@@ -22,25 +22,30 @@ class PermissionSeeder extends Seeder
 
         // Manage Authors permissions
         Permission::create([
-            'permission' => 'author'
+            'permission' => 'authors'
         ]);
         Permission::create([
-            'permission' => 'author.create'
+            'permission' => 'authors:create'
         ]);
         Permission::create([
-            'permission' => 'author.update'
+            'permission' => 'authors:update'
         ]);
         Permission::create([
-            'permission' => 'author.delete'
+            'permission' => 'authors:delete'
+        ]);
+
+        // Manage Documents permissions
+        Permission::create([
+            'permission' => 'documents'
         ]);
         Permission::create([
-            'permission' => 'document.create'
+            'permission' => 'documents:create'
         ]);
         Permission::create([
-            'permission' => 'document.update'
+            'permission' => 'documents:update'
         ]);
         Permission::create([
-            'permission' => 'document.delete'
+            'permission' => 'documents:delete'
         ]);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
@@ -25,21 +26,26 @@ Route::group(['prefix' => 'v1'], function () {
     });
 
     // Authenticated routes
-    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-        dd(get_class($request->user()));
-        return new UserResource($request->user());
-    });
+    Route::group(['middleware' => 'auth:sanctum'], function() {
+        Route::get('/user', [AuthController::class, 'show']);
 
-    Route::group([
-        'prefix' => 'documents',
-        'middleware' => 'auth:sanctum'
-    ], function() {
-        Route::post('', [DocumentController::class, 'store']);
-        Route::group(['prefix' => '{id}'], function() {
-            Route::put('', [DocumentController::class, 'update']);
-            Route::delete('', [DocumentController::class, 'destroy']);
+        Route::group(['prefix' => 'documents'], function() {
+            Route::post('', [DocumentController::class, 'store']);
+            Route::group(['prefix' => '{id}'], function() {
+                Route::put('', [DocumentController::class, 'update']);
+                Route::delete('', [DocumentController::class, 'destroy']);
+            });
+        });
+
+        Route::group(['prefix' => 'authors'], function() {
+            Route::post('', [AuthorController::class, 'store']);
+            Route::group(['prefix' => '{id}'], function() {
+                Route::put('', [AuthorController::class, 'update']);
+                Route::delete('', [AuthorController::class, 'destroy']);
+            });
         });
     });
+
 
 
 

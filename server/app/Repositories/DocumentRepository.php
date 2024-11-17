@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 
 class DocumentRepository implements DocumentRepositoryInterface {
-    public function index(): Collection
+    public function getAll(): Collection
     {
         return Document::get();
     }

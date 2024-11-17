@@ -5,6 +5,7 @@ namespace App\Services;
 use App\DTO\StoreDocumentDTO;
 use App\DTO\UpdateDocumentDTO;
 use App\Http\Requests\StoreDocumentRequest;
+use App\Http\Requests\UpdateDocumentRequest;
 use App\Http\Resources\DocumentAbstractResource;
 use App\Http\Resources\DocumentResource;
 use App\Repositories\Contracts\DocumentRepositoryInterface;
@@ -22,7 +23,7 @@ class DocumentService implements DocumentServiceInterface {
 
     public function index(Request $request): AnonymousResourceCollection
     {
-        return DocumentAbstractResource::collection($this->documentRepository->index());
+        return DocumentAbstractResource::collection($this->documentRepository->getAll());
     }
 
     public function store(StoreDocumentRequest $request): DocumentResource
@@ -35,7 +36,7 @@ class DocumentService implements DocumentServiceInterface {
         return new DocumentResource($this->documentRepository->getByIdOrFail($request->route('id')));
     }
 
-    public function update(Request $request): DocumentResource
+    public function update(UpdateDocumentRequest $request): DocumentResource
     {
         return new DocumentResource($this->documentRepository->update($request->route('id'), UpdateDocumentDTO::createFromRequest($request)));
     }
