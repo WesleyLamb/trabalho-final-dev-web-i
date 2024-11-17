@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\Base64;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDocumentRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class StoreDocumentRequest extends FormRequest
      */
     public function authorize()
     {
-        return request()->user()->permissions->;
+        return true;
     }
 
     /**
@@ -25,11 +24,8 @@ class StoreDocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'subtitle' => ['nullable', 'string', 'max:255'],
-            'publication_year' => ['required', 'integer', 'max:'.date('Y')],
-            'abstract' => ['nullable', 'string'],
-            // 'file' => ['required', 'file', new Base64()],
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ];
     }
 }

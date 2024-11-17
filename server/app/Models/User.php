@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function permissions()
+    {
+        return $this->hasManyThrough(Permission::class, UserPermission::class, 'user_id', 'id', 'id', 'permission_id');
+    }
 }

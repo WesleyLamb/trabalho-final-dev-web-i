@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->unique(['document_id', 'keyword_id']);
 
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 
