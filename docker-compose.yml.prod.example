@@ -1,0 +1,53 @@
+services:
+  nginx:
+    depends_on:
+      - app
+    image: nginx
+    container_name: portaltcc.nginx
+    tty: true
+    ports:
+      - "${NGINX_PORT}:443"
+    restart: unless-stopped
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./app:/var/www/app
+      - ${PEM_FILE}:/etc/ssl/certs/fullchain.pem # Change this to your certificate
+      - ${KEY_FILE}:/etc/ssl/certs/privkey.pem # Change this to your certificate
+    networks:
+      - portaltcc
+  db:
+    image: postgres
+    container_name: portaltcc.db
+    tty: true
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - portaltcc
+  app:
+    depends_on:
+      - db
+    build:
+      context: .
+    image: ifcvda/portaltcc
+    container_name: portaltcc.app
+    tty: true
+    restart: unless-stopped
+    volumes:
+      - ./app:/var/www/app
+      - ${PEM_FILE}:/etc/ssl/certs/fullchain.pem
+      - ${KEY_FILE}:/etc/ssl/certs/privkey.pem
+    networks:
+      - portaltcc
+volumes:
+  db:
+    driver: local
+networks:
+  portaltcc:
+    driver: bridge
