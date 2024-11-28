@@ -12,6 +12,10 @@ Trabalho final da matéria de Desenvolvimento Web I a fim de aplicar os conhecim
 
 O Trabalho em questão foi o desenvolvimento de uma página web para envio e consulta de TCC's
 
+O objetivo da plataforma é agrupar Trabalhos de Conclusão de Curso em uma única biblioteca virtual, podendo assim serem acessados por pessoas de todo o mundo. Muitos desses trabalhos podem grande ter relevância para temas mais específicos, e talvez não chegariam às pessoas interessadas.
+
+A platadorma permite a criação de usuários e documentos. O acesso à biblioteca de TCC's não exige autenticação, porém para adicionar e editar os seus arquivos é preciso estar logado. Usuários admin podem adicionar, excluir ou editar usuários e documentos.
+
 ## Requisitos
 
 - Certificado (pode ser [auto-assinado](https://gist.github.com/WesleyLamb/113348638bedb0b6aeacbe48efd2ae4c))
