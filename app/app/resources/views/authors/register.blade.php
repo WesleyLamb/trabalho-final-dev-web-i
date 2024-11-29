@@ -2,7 +2,8 @@
 @section('content')
     
     <div style="display:flex; width: 40rem; justify-content:center">
-        <form style="height: 30rem; display: flex; flex-direction:column; align-items:flex-start; padding:3rem 1rem 3rem 1rem; gap:1rem; border-radius:0.5rem; box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.4);">
+        <form style="height: 36rem; width: 30rem; display: flex; flex-direction:column; align-items:flex-start; padding:1rem 1rem 3rem 1rem; gap:1rem; border-radius:0.5rem; box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.4);">
+            <h3>Cadastre-se:</h3>
             <div class="form-group" style="width: 100%">
                 <label for="validationCustom01">Nome Completo</label>
                 <input type="text" class="form-control" id="validationCustom01" placeholder="Nome Completo" required>
@@ -27,8 +28,12 @@
                 <label for="exampleInputPassword1">Senha</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" required>
             </div>
+            <div class="form-group" style="width: 100%">
+                <label for="exampleInputPassword1">Senha</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirme sua senha" required>
+            </div>
             <button type="submit" class="btn btn-primary"  style="--bs-btn-bg: rgb(0,0,50); --bs-btn-border-color: none; --bs-btn-hover-bg: rgb(15, 39, 72);">Cadastrar</button>
-            <a class="text-black" href="{{route('auth.register-view')}}">Já tem cadastro?</a>
+            <a class="text-black" href="{{route('auth.login.view')}}">Já tem cadastro?</a>
         </form>
     </div>
 

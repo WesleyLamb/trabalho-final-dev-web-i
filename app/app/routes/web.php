@@ -60,6 +60,7 @@ Route::group([
     'as' => 'documents.'
 ], function() {
     Route::get('', [ViewDocumentController::class, 'index'])->name('catalog');
+    Route::get('create', [ViewDocumentController::class,'create'])->name('create'); // Não oficial, somente para trabalhar na view
     Route::get('detail', [ViewDocumentController::class, 'detail'])->name('detail'); //Não oficial, somente para trabalhar na view
     Route::group(['prefix' => '{id}'], function() {
         Route::get('', [ViewDocumentController::class, 'show'])->name('view');
@@ -71,6 +72,7 @@ Route::group([
     'as' => 'authors.'
 ], function() {
     Route::get('', [ViewAuthorController::class, 'index'])->name('all');
+    Route::get('/update', [ViewAuthorController::class, 'update'])->name('update.user'); //Não oficial, somente para trabalhar na view
     Route::group(['prefix' => '{id}'], function() {
         Route::get('', [ViewAuthorController::class, 'show'])->name('view');
     });

@@ -1,14 +1,15 @@
 @extends('principal')
 @section('content')
     
-    <div style="display:flex; width: 40rem; justify-content:center">
-        <form action="{{route('auth.login')}}" method="POST" style="height: 23rem; display: flex; flex-direction:column; align-items:flex-start; padding:3rem 1rem 3rem 1rem; gap:1rem; border-radius:0.5rem; box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.4);">
+    <div style="display:flex; justify-content:center">
+        <form action="{{route('auth.login')}}" method="POST" style="height: 24rem; width: 30rem; display: flex; flex-direction:column; align-items:flex-start; padding:1rem 1rem 3rem 1rem; gap:1rem; border-radius:0.5rem; box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.4);">
             @csrf
-            <div class="form-group">
+            <h3>Login</h3>
+            <div class="form-group" style="width: 100%">
                 <label for="exampleInputEmail1">Email ou Usuário</label>
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email ou usuário">
             </div>
-            <div class="form-group">
+            <div class="form-group" style="width: 100%">
                 <label for="exampleInputPassword1">Senha</label>
                 <input type="password" class="form-control" id="password" placeholder="Senha">
             </div>

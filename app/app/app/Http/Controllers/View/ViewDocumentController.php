@@ -38,7 +38,7 @@ class ViewDocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('documents.create')->with('title', 'Novo Documento');
     }
 
     /**
