@@ -17,12 +17,12 @@ class ViewAuthController extends Controller
 
     public function login()
     {
-        return view('authors.login')->with('title', 'Login');
+        return view('users.login')->with('title', 'Login');
     }
 
     public function register()
     {
-        return view('authors.register')->with('title', 'Registro');
+        return view('users.register')->with('title', 'Registro');
     }
     /**
      * Display a listing of the resource.
@@ -84,9 +84,10 @@ class ViewAuthController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $title = 'Atualizar cadastro';
+        return view('users.update')->with('title');
     }
 
     /**

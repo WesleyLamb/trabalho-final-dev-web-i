@@ -27,9 +27,11 @@ Route::group([
     Route::get('register', [ViewAuthController::class, 'register'])->name('register.view');
 });
 
+Route::get('/user/update', [ViewAuthController::class, 'update'])->name('update.user'); //Não oficial, somente para trabalhar na view
 // Authenticated routes
 Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/user', [ViewAuthController::class, 'show'])->name('user.show.view');
+    // Route::get('/user/update', [ViewAuthController::class, 'update'])->name('update.user'); //Não oficial, somente para trabalhar na view
 
     Route::group([
         'prefix' => 'documents',
@@ -72,7 +74,6 @@ Route::group([
     'as' => 'authors.'
 ], function() {
     Route::get('', [ViewAuthorController::class, 'index'])->name('all');
-    Route::get('/update', [ViewAuthorController::class, 'update'])->name('update.user'); //Não oficial, somente para trabalhar na view
     Route::group(['prefix' => '{id}'], function() {
         Route::get('', [ViewAuthorController::class, 'show'])->name('view');
     });
