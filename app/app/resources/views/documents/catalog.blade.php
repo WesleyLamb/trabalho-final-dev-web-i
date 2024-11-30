@@ -15,12 +15,11 @@
      <h3 style="width: 100%; padding: 0 0 2rem 1rem ;">Todos os documentos</h3>
      
      @if (count($documents)>0)
-          <div class="grid text-center" style="width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-gap: 2rem; align-items: flex-start;">
-          
+          <div class="grid-container">
                @foreach($documents as $document)       
                     <div  style="display: flex; justify-content: center; align-items:center">
-                         <div class="card" style="width: auto; height: auto; background-color: rgb(242, 240, 224)">
-                              <div class="card-body">
+                         <div class="card" style="align-items: center; width: auto; height: auto; background-color: rgb(242, 240, 224)">
+                              <div class="card-body" style="align-items: center;">
                                    <h5 class="card-title">{{ $document['title'] }}</h5>
                                    <h6 class="card-subtitle">{{$document['subtitle']}}</h6>
                                    <p class="card-text">Autor: {{$document->author}}</p>
@@ -44,4 +43,23 @@
      <h4>Não há documentos para exibir.</h4>
 @endempty
 
+<style>
+     .grid-container {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+          width: 100%;
+          align-items:flex-start;
+      }
+      @media (max-width: 768px) {
+          .grid-container {
+              grid-template-columns: repeat(2, 1fr);
+          }
+      }
+      @media (max-width: 480px) {
+          .grid-container {
+              grid-template-columns: 1fr;
+          }
+      }
+</style>
 @endsection
