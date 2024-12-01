@@ -20,6 +20,7 @@ class DocumentAbstractResource extends JsonResource
             'subtitle' => $this->subtitle,
             'publication_year' => $this->publication_year,
             'author' => new AuthorAbstractResource($this->principalAuthor),
+            'download' => route('documents.download', ['filename' => $this->filename]),
         ];
     }
 }

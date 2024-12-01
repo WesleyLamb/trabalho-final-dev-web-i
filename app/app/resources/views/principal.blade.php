@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{$title}}</title>
-    <link rel="stylesheet" href="{{ asset('css/home.css')}}">
     <link rel="shortcut icon" href="{{asset('images/tcc.ico')}}" type="image/x-icon">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
 </head>
-<body>
+<body >
     <header>
-        <nav class="navbar bg-body-tertiary fixed-top" style="padding:0;">
-            <div class="container-fluid" style="background-color: rgb(0, 0, 50); position:0;">
-                <a class="navbar-brand" href="{{route('home')}}" style="padding-bottom: 0.5rem; padding-left: 1rem;">
-                    <img src="{{asset('images/logotcc.webp')}}" alt="Logo Portal TCC" width="100" height="50">
+        <nav class="navbar bg-body-tertiary fixed-top p-0">
+            <div class="container-fluid">
+                <a class="navbar-brand pb-2 pl-3" href="{{route('home')}}">
+                    <img class="img-logo" src="{{asset('images/logotcc.webp')}}" alt="Logo Portal TCC">
                 </a>
 
                 @yield('search')
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="background-color: #00a8be; border: var(--bs-border-width) solid rgb(0, 168, 190);">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Alternar navegação" style="background-color: #00a8be; border: var(--bs-border-width) solid rgb(0, 168, 190);">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background-color: rgb(0,0,40); color: white;">
@@ -34,7 +37,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('documents.catalog')}}" style="color: white;">Catálogo</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             @auth
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
                             Autores
@@ -50,7 +53,7 @@
                                 <a class="btn btn-outline-light btn-rounded" href="{{route('auth.login.view')}}" role="button">Sign up!</a>
                             </p>
                             @endguest
-                        </li>
+                        </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -58,15 +61,16 @@
         </nav>
     </header>
 
-    <main style="display:flex; justify-content:center; position:relative; padding: 1rem; padding-top: 6rem; padding-bottom: 5rem; height: 100vh;">
+    <main class="container" style="display:flex; justify-content:center; position:relative; padding: 1rem; padding-top: 6rem; padding-bottom: 5rem; height: 100vh;">
         @yield('content')
     </main>
-        
+
     <footer class="text-center text-white fixed-bottom" style="background-color: rgb(0, 0, 40); width: 100vw">
         <div class="text-center p-3" style="background-color: rgb(0, 0, 20); height: 6vh; align-items:center; padding-bottom: 1rem;">
-            &copy; 2024 - Copyright: 
+            &copy; 2024 - Copyright:
             <a class="text-white" href="{{route('home')}}">Portal TCC</a>
         </div>
     </footer>
 </body>
+@yield('innerJS')
 </html>

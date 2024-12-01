@@ -1,0 +1,31 @@
+/** !important: override bootstrap defaults */
+.btn-primary {
+    --bs-btn-color: #fff !important;
+    --bs-btn-bg: #000032 !important;
+    --bs-btn-border-color: none !important;
+    --bs-btn-hover-color: #fff !important;
+    --bs-btn-hover-bg: rgb(15, 39, 72) !important;
+}
+
+.bg-body-tertiary {
+    --bs-tertiary-bg-rgb: 0, 0, 50 !important
+}
+
+.form-login {
+    width: 300px;
+}
+
+.img-logo {
+    width: 100px;
+    height: 50px;
+}
+
+.bg-body-tertiary {
+    background-color: #00a8be
+}
+
+.text-overflow-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

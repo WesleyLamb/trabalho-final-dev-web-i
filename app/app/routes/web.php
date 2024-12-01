@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('', [HomeController::class, 'home'])->name('home'); 
+Route::get('', [HomeController::class, 'home'])->name('home');
 
 Route::group([
     'prefix' => 'auth',
@@ -67,6 +67,7 @@ Route::group([
     Route::group(['prefix' => '{id}'], function() {
         Route::get('', [ViewDocumentController::class, 'show'])->name('view');
     });
+    Route::get('download/{filename}', [ViewDocumentController::class, 'download'])->name('download');
 });
 
 Route::group([

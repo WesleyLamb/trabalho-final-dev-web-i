@@ -96,4 +96,9 @@ class ViewDocumentController extends Controller
     {
         //
     }
+
+    public function download($filename)
+    {
+        return response()->download(storage_path('app/public/documents/' . $filename));
+    }
 }

@@ -1,19 +1,25 @@
 @extends('principal')
 @section('content')
-    
-    <div style="display:flex; justify-content:center">
-        <form action="{{route('auth.login')}}" method="POST" style="margin-top: 6rem; height: 21rem; width: 30rem; display: flex; flex-direction:column; align-items:flex-start; padding:1rem 1rem 3rem 1rem; gap:1rem; border-radius:0.5rem; box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.4);">
+
+    <div class="mx-auto form-login mt-5">
+            <form action="{{route('auth.login')}}?redirect=/" method="POST">
             @csrf
             <h3>Login</h3>
-            <div class="form-group" style="width: 100%">
-                <label for="exampleInputEmail1">Email ou Usuário</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email ou usuário">
+            <div class="form-group mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email">
             </div>
-            <div class="form-group" style="width: 100%">
-                <label for="exampleInputPassword1">Senha</label>
-                <input type="password" class="form-control" id="password" placeholder="Senha">
+            <div class="form-group mb-3">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
             </div>
-            <button type="submit" class="btn btn-primary"  style="--bs-btn-bg: rgb(0,0,50); --bs-btn-border-color: none; --bs-btn-hover-bg: rgb(15, 39, 72);">Login</button>
+            <div class="form-group form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                <label class="form-check-label" for="remember">Lembrar de mim</label>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary mb-3">Login</button>
+            </div>
             <a class="text-black" href="{{route('auth.register.view')}}">Não tem cadastro?</a>
         </form>
 
@@ -21,10 +27,10 @@
             <div class="alert alert-danger" role="alert">
                 <ul>
                     @foreach ($errors->all() as $errors)
-                        <li>{{$errors}}</li>                        
+                        <li>{{$errors}}</li>
                     @endforeach
                 </ul>
-            </div>            
+            </div>
         @endif
 
         @if (session('success'))

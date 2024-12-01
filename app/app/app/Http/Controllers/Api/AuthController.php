@@ -20,15 +20,18 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, !!$request->input('remember'))) {
             $user = User::find(Auth::user()->id);
             $token = $user->createToken('auth_token')->plainTextToken;
-
-            return response()->json(['data' => [
-                'access_token' => $token,
-                'token_type' => 'Bearer',
-                'user' => new UserResource($user)
-            ]]);
+            if (!$request->query('redirect')) {
+                return response()->json(['data' => [
+                    'access_token' => $token,
+                    'token_type' => 'Bearer',
+                    'user' => new UserResource($user)
+                ]]);
+            } else {
+                return response()->redirectTo($request->input('redirect'));
+            }
         }
 
         return response()->json([
