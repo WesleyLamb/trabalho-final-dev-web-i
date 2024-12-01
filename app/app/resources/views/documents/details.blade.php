@@ -64,7 +64,7 @@
     });
     @endif
     @if($action == 'edit')
-        document.getElementById('salvar').addEventListener('click', function() {
+        document.getElementById('salvar').addEventListener('click', async function() {
             let data = {};
             data.id = document.getElementById('id').value;
             data.title = document.getElementById('title').value;
@@ -73,8 +73,9 @@
             data.author = {};
             data.author.id = document.getElementById('author.id').value;
             data.abstract = document.getElementById('abstract').value;
-            if (document.getElementById('file').files.count > 0)
-                data.file = toBase64(document.getElementById('file').files[0]);
+            console.log(document.getElementById('file').files);
+            if (document.getElementById('file').files.length > 0)
+                data.file = await toBase64(document.getElementById('file').files[0]);
 
             axios({
                 method: 'put',
@@ -102,7 +103,7 @@
 
             axios({
                 method: 'post',
-                url: "{{route('api.v1.documents.store', $id)}}",
+                url: "{{route('api.v1.documents.store')}}",
                 data: data,
             }).then(function (response) {
                 alert('Documento criado com sucesso!');
