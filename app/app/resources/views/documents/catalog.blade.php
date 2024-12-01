@@ -71,7 +71,7 @@
         language: {
             url: 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/pt-BR.json'
         },
-        ajax: "{{ route('documents.index') }}",
+        ajax: "{{ route('api.v1.documents.index') }}",
         dataSrc: 'data',
         autoWidth: false,
         columnDefs: [
@@ -92,15 +92,16 @@
             {
                 targets: 2,
                 width: "30%",
-                data: function(row, type, val, meta) {
+                data: 'author.name'
+                {{-- data: function(row, type, val, meta) {
                     return row.author ? `<span>${row.author.name}<a class="ms-1 text-reset text-decoration-none" href="` + "{{ route('authors.view', '') }}" + `/${row.author.id}"><i class="fa-solid fa-magnifying-glass"></i></a></span>` : '';
-                }
+                } --}}
             },
             {
                 targets: 3,
                 width: "10%",
                 data: function(row, type, val, meta) {
-                    return `<a class="text-reset" href="${row.download}"><i class="fa-solid fa-file-arrow-down"></i>`;
+                    return `<a class="text-reset" href="${row.file_url}"><i class="fa-solid fa-file-arrow-down"></i>`;
                 }
             }
         ]

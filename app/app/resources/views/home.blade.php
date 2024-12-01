@@ -1,6 +1,6 @@
 @extends('principal')
 @section('content')
-    
+
 <div>
      <header style="display: flex; flex-direction:column;">
           <div class="logo" style="display: flex; flex-direction: column; align-items: center">
@@ -25,10 +25,10 @@
                     <li><strong>Foco na excelência:</strong> Trabalhos revisados e com qualidade comprovada.</li>
                </ul>
           </section>
-          <div class="cta">
+          <div class="d-flex flex-column justify-content-center">
                <p>Pronto para dar o próximo passo no seu trabalho acadêmico?</p>
                <a href="{{route('documents.catalog')}}" class="btn btn-primary" style="--bs-btn-bg: rgb(0,0,50); --bs-btn-border-color: none; --bs-btn-hover-bg: rgb(15, 39, 72);" role="button">Explorar TCCs</a>
-               <a href="{{route('auth.login.view')}}" class="btn btn-primary" style="--bs-btn-bg: rgb(0,0,50); --bs-btn-border-color: none; --bs-btn-hover-bg: rgb(15, 39, 72);" role="button">Login</a>
+               {{-- <a href="{{route('auth.login.view')}}" class="btn btn-primary" style="--bs-btn-bg: rgb(0,0,50); --bs-btn-border-color: none; --bs-btn-hover-bg: rgb(15, 39, 72);" role="button">Login</a> --}}
           </div>
      </div>
 </div>

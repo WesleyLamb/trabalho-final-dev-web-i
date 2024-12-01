@@ -63,19 +63,19 @@ Route::group([
 ], function() {
     Route::get('', [ViewDocumentController::class, 'index'])->name('catalog');
     Route::get('create', [ViewDocumentController::class,'create'])->name('create'); // Não oficial, somente para trabalhar na view
-    Route::get('detail', [ViewDocumentController::class, 'detail'])->name('detail'); //Não oficial, somente para trabalhar na view
+    // Route::get('details', [ViewDocumentController::class, 'details'])->name('details'); //Não oficial, somente para trabalhar na view
     Route::group(['prefix' => '{id}'], function() {
         Route::get('', [ViewDocumentController::class, 'show'])->name('view');
     });
     Route::get('download/{filename}', [ViewDocumentController::class, 'download'])->name('download');
 });
 
-Route::group([
-    'prefix' => 'authors',
-    'as' => 'authors.'
-], function() {
-    Route::get('', [ViewAuthorController::class, 'index'])->name('all');
-    Route::group(['prefix' => '{id}'], function() {
-        Route::get('', [ViewAuthorController::class, 'show'])->name('view');
-    });
-});
+// Route::group([
+//     'prefix' => 'authors',
+//     'as' => 'authors.'
+// ], function() {
+//     Route::get('', [ViewAuthorController::class, 'index'])->name('catalog');
+//     Route::group(['prefix' => '{id}'], function() {
+//         Route::get('', [ViewAuthorController::class, 'show'])->name('view');
+//     });
+// });

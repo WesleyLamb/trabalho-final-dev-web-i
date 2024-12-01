@@ -21,7 +21,7 @@
 
                 @yield('search')
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Alternar navegação" style="background-color: #00a8be; border: var(--bs-border-width) solid rgb(0, 168, 190);">
+                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Alternar navegação" style="background-color: #00a8be; border: var(--bs-border-width) solid rgb(0, 168, 190);">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background-color: rgb(0,0,40); color: white;">
@@ -37,11 +37,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('documents.catalog')}}" style="color: white;">Catálogo</a>
                         </li>
-                        {{-- <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('authors.catalog')}}" style="color: white;">Autores</a>
+                        </li>
+                        <li class="nav-item dropdown">
                             @auth
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
-                            Autores
-                            </a>
                             <ul class="dropdown-menu" style="background-color: rgb(0,0,60); --bs-dropdown-link-hover-bg: rgb(0,0,90);">
                             <li><a class="dropdown-item" href="#" style="color: white;">Upload TCC</a></li>
                             <li><a class="dropdown-item" href="#" style="color: white;">Minha Conta</a></li>
@@ -53,10 +53,10 @@
                                 <a class="btn btn-outline-light btn-rounded" href="{{route('auth.login.view')}}" role="button">Sign up!</a>
                             </p>
                             @endguest
-                        </li> --}}
+                        </li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </nav>
     </header>

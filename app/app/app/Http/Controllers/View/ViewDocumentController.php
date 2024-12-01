@@ -26,9 +26,9 @@ class ViewDocumentController extends Controller
         return view('documents.catalog', compact(['title', 'documents']));
     }
 
-    public function detail()
+    public function details()
     {
-        return view('documents.detail')->with('title', 'Detalhes');
+        return view('documents.details')->with('title', 'Detalhes');
     }
 
     /**
@@ -60,7 +60,7 @@ class ViewDocumentController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('documents.details')->with('title', 'Visualizar Documento')->with('id', $id)->with('edit', false);
     }
 
     /**
