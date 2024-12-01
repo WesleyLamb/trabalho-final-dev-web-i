@@ -28,7 +28,7 @@ class PermissionSeeder extends Seeder
             'permission' => 'authors:create'
         ]);
         Permission::create([
-            'permission' => 'authors:update'
+            'permission' => 'authors:edit'
         ]);
         Permission::create([
             'permission' => 'authors:delete'
@@ -42,7 +42,7 @@ class PermissionSeeder extends Seeder
             'permission' => 'documents:create'
         ]);
         Permission::create([
-            'permission' => 'documents:update'
+            'permission' => 'documents:edit'
         ]);
         Permission::create([
             'permission' => 'documents:delete'
