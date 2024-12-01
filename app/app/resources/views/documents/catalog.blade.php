@@ -56,10 +56,11 @@
                 targets: 3,
                 width: "15%",
                 data: function(row, type, val, meta) {
-                    let actions = `<a class="btn btn-outline-dark btn-rounded" title="Ver detalhes" href="{{ route('documents.view', '__id__') }}" role="button"><i class="fa-solid fa-magnifying-glass"></i></a>`;
-                    actions += `<a class="btn btn-outline-dark btn-rounded" title="Baixar PDF" href="{{ route('documents.download', '__id__') }}" role="button"><i class="fa-solid fa-file-arrow-down"></i></a>`;
+                    let actions = `<a class="btn btn-outline-dark btn-rounded me-1" title="Ver detalhes" href="{{ route('documents.view', '__id__') }}" role="button"><i class="fa-solid fa-magnifying-glass"></i></a>`;
+                    if (row.file_url)
+                        actions += `<a class="btn btn-outline-dark btn-rounded me-1" title="Baixar PDF" href="${row.file_url}" role="button"><i class="fa-solid fa-file-arrow-down"></i></a>`;
                     @auth
-                        actions += `<a class="btn btn-outline-dark btn-rounded" title="Editar" href="{{ route('documents.edit.view', '__id__') }}" role="button"><i class="fa-solid fa-pencil"></i></a>`;
+                        actions += `<a class="btn btn-outline-dark btn-rounded me-1" title="Editar" href="{{ route('documents.edit.view', '__id__') }}" role="button"><i class="fa-solid fa-pencil"></i></a>`;
                     @endif
                     actions = actions.replace(/__id__/g, row.id);
                     return actions;

@@ -42,7 +42,7 @@ class ViewDocumentController extends Controller
      */
     public function show($id)
     {
-        return view('documents.details')->with('title', 'Visualizar documento')->with('id', $id)->with('action', 'show');
+        return view('documents.details')->with('title', 'Visualizar documento')->with('id', $id)->with('action', 'view');
     }
 
     /**
