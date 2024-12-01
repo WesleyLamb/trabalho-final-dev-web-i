@@ -1,15 +1,7 @@
 @extends('principal')
-
-{{-- @section('search')
-<form class="d-flex mt-3" role="search" style="margin-bottom: 1rem; padding-right: 6rem;">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-light btn-rounded" type="submit">Search</button>
-</form>
-@endsection --}}
-
 @section('content')
 <div class="w-100">
-    <h1>Catálogo de Documentos</h1>
+    <h1>{{$title}}</h1>
     <p>Encontre aqui os documentos disponíveis para leitura.</p>
     <table id="documentsTable" class="display">
         <thead>
@@ -17,50 +9,13 @@
                 <th>Título</th>
                 <th>Publicação</th>
                 <th>Autor</th>
-                <th>Download</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
         </tbody>
     </table>
 </div>
-{{-- @if (count($documents)>0)
-<div style="display: flex; flex-direction: column; padding: 1rem; width: 100%">
-
-    <h3 style="width: 100%; padding: 0 0 2rem 1rem ;">Todos os documentos</h3>
-
-    @if (count($documents)>0)
-    <div class="grid text-center"
-        style="width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-gap: 2rem; align-items: flex-start;">
-
-        @foreach($documents as $document)
-        <div style="display: flex; justify-content: center; align-items:center">
-            <div class="card" style="width: auto; height: auto; background-color: rgb(242, 240, 224)">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $document['title'] }}</h5>
-                    <h6 class="card-subtitle">{{$document['subtitle']}}</h6>
-                    <p class="card-text">Autor: {{$document->author}}</p>
-                    <p class="card-text">Co-autor: variavelNomeCoautor</p>
-                    <p class="card-text">Orientador: variavelNomeOrientador</p>
-                    <p class="card-text">Ano de publicação: {{$document['publication_year']}}</p>
-                    <a href="{{route('documents.view', $document['id'])}}" class="btn btn-primary"
-                        style="  --bs-btn-bg: rgb(0,0,50);   --bs-btn-border-color: none;   --bs-btn-hover-bg: rgb(15, 39, 72);">Ler
-                        mais</a>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-    @else
-    <h4>Não há documentos para exibir!</h4>
-    @endif
-</div>
-
-@endif --}}
-
-{{-- @empty($documents)
-<h4>Não há documentos para exibir.</h4>
-@endempty --}}
 
 @endsection
 
@@ -91,7 +46,7 @@
             },
             {
                 targets: 2,
-                width: "30%",
+                width: "25%",
                 data: 'author.name'
                 {{-- data: function(row, type, val, meta) {
                     return row.author ? `<span>${row.author.name}<a class="ms-1 text-reset text-decoration-none" href="` + "{{ route('authors.view', '') }}" + `/${row.author.id}"><i class="fa-solid fa-magnifying-glass"></i></a></span>` : '';
@@ -99,12 +54,18 @@
             },
             {
                 targets: 3,
-                width: "10%",
+                width: "15%",
                 data: function(row, type, val, meta) {
-                    return `<a class="text-reset" href="${row.file_url}"><i class="fa-solid fa-file-arrow-down"></i>`;
+                    let actions = `<a class="btn btn-outline-dark btn-rounded" title="Ver detalhes" href="{{ route('documents.view', '__id__') }}" role="button"><i class="fa-solid fa-magnifying-glass"></i></a>`;
+                    actions += `<a class="btn btn-outline-dark btn-rounded" title="Baixar PDF" href="{{ route('documents.download', '__id__') }}" role="button"><i class="fa-solid fa-file-arrow-down"></i></a>`;
+                    @auth
+                        actions += `<a class="btn btn-outline-dark btn-rounded" title="Editar" href="{{ route('documents.edit.view', '__id__') }}" role="button"><i class="fa-solid fa-pencil"></i></a>`;
+                    @endif
+                    actions = actions.replace(/__id__/g, row.id);
+                    return actions;
                 }
             }
         ]
     });
 </script>
-@endsection();
+@endsection()

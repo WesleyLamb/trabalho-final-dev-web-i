@@ -10,13 +10,15 @@ class StoreDocumentDTO implements BaseDTOInterface
     public ?string $subtitle;
     public int $publicationYear;
     public ?string $abstract;
+    public string $file;
 
-    public function __construct(string $title, ?string $subtitle, int $publicationYear, ?string $abstract)
+    public function __construct(string $title, ?string $subtitle, int $publicationYear, ?string $abstract, string $file)
     {
         $this->title = $title;
         $this->subtitle = $subtitle;
         $this->publicationYear = $publicationYear;
         $this->abstract = $abstract;
+        $this->file = $file;
     }
 
     public static function createFromRequest(Request $request): BaseDTOInterface
@@ -25,7 +27,8 @@ class StoreDocumentDTO implements BaseDTOInterface
             $request->input('title'),
             $request->input('subtitle'),
             (int) $request->input('publication_year'),
-            $request->input('abstract')
+            $request->input('abstract'),
+            $request->input('file')
         );
     }
 }

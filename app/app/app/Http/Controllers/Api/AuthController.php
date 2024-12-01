@@ -38,4 +38,13 @@ class AuthController extends Controller
             'message' => 'Unauthorized'
         ], 401);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->remember_token = null;
+        $request->user()->save();
+        Auth::logout();
+
+        return response()->redirectTo('/');
+    }
 }

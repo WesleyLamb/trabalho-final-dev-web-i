@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="mx-auto form-login mt-5">
-            <form action="{{route('auth.login')}}?redirect=/" method="POST">
+            <form action="{{route('api.v1.auth.login')}}?redirect=/" method="POST">
             @csrf
             <h3>Login</h3>
             <div class="form-group mb-3">

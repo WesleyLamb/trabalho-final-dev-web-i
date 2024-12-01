@@ -21,14 +21,7 @@ class ViewDocumentController extends Controller
      */
     public function index()
     {
-        $title = 'Catálogo';
-        $documents = $this->documentRepository->getAll();
-        return view('documents.catalog', compact(['title', 'documents']));
-    }
-
-    public function details()
-    {
-        return view('documents.details')->with('title', 'Detalhes');
+        return view('documents.catalog')->with('title', 'Catálogo');
     }
 
     /**
@@ -38,18 +31,7 @@ class ViewDocumentController extends Controller
      */
     public function create()
     {
-        return view('documents.create')->with('title', 'Novo Documento');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('documents.details')->with('title', 'Novo documento')->with('action', 'create');
     }
 
     /**
@@ -60,7 +42,7 @@ class ViewDocumentController extends Controller
      */
     public function show($id)
     {
-        return view('documents.details')->with('title', 'Visualizar Documento')->with('id', $id)->with('edit', false);
+        return view('documents.details')->with('title', 'Visualizar documento')->with('id', $id)->with('action', 'show');
     }
 
     /**
@@ -71,7 +53,7 @@ class ViewDocumentController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('documents.details')->with('title', 'Editar documento')->with('id', $id)->with('action', 'edit');
     }
 
     /**

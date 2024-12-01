@@ -37,11 +37,12 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         'prefix' => 'documents',
         'as' => 'documents.'
     ], function() {
-        Route::post('', [ViewDocumentController::class, 'store'])->name('store.view');
-        Route::group(['prefix' => '{id}'], function() {
-            Route::put('', [ViewDocumentController::class, 'update'])->name('update.view');
-            Route::delete('', [ViewDocumentController::class, 'destroy'])->name('destroy.view');
-        });
+        Route::get('{id}/edit', [ViewDocumentController::class, 'edit'])->name('edit.view');
+        // Route::post('', [ViewDocumentController::class, 'store'])->name('store.view');
+        // Route::group(['prefix' => '{id}'], function() {
+        //     Route::put('', [ViewDocumentController::class, 'update'])->name('update.view');
+        //     Route::delete('', [ViewDocumentController::class, 'destroy'])->name('destroy.view');
+        // });
     });
 
     Route::group([

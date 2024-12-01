@@ -29,7 +29,7 @@ class StoreDocumentRequest extends FormRequest
             'subtitle' => ['nullable', 'string', 'max:255'],
             'publication_year' => ['required', 'integer', 'max:'.date('Y')],
             'abstract' => ['nullable', 'string'],
-            // 'file' => ['required', 'file', new Base64()],
+            'file' => ['required', 'file', 'mimetypes:application/pdf'],
         ];
     }
 }
