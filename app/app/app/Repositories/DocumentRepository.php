@@ -7,6 +7,7 @@ use App\DTO\UpdateDocumentDTO;
 use App\Models\Document;
 use App\Repositories\Contracts\DocumentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class DocumentRepository implements DocumentRepositoryInterface {
@@ -29,6 +30,8 @@ class DocumentRepository implements DocumentRepositoryInterface {
         }
         $document->filename = $slug;
         $document->save();
+
+        Storage::disk('documents')->put($slug, base64_decode($data->file));
 
         return $document->refresh();
     }

@@ -18,6 +18,9 @@ class UpdateDocumentDTO implements BaseDTOInterface
     public bool $abstractWasChanged = false;
     public ?string $abstract;
 
+    public bool $fileWasChanged = false;
+    public string $file;
+
     public static function createFromRequest(Request $request): BaseDTOInterface
     {
         $dto = new self();
@@ -39,6 +42,11 @@ class UpdateDocumentDTO implements BaseDTOInterface
         if ($request->has('abstract')) {
             $dto->abstractWasChanged = true;
             $dto->abstract = $request->input('abstract');
+        }
+
+        if ($request->has('file')) {
+            $dto->fileWasChanged = true;
+            $dto->file = $request->input('file');
         }
 
         return $dto;

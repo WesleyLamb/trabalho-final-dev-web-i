@@ -5,6 +5,7 @@ namespace App\Http\Controllers\View;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\DocumentRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ViewDocumentController extends Controller
 {
@@ -81,6 +82,6 @@ class ViewDocumentController extends Controller
 
     public function download($filename)
     {
-        return response()->download(storage_path('app/public/documents/' . $filename));
+        return response()->download(Storage::disk('documents')->files($filename));
     }
 }

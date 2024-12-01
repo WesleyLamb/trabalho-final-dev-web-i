@@ -28,7 +28,7 @@ class UpdateDocumentRequest extends FormRequest
             'subtitle' => ['sometimes', 'string', 'nullable', 'max:255'],
             'publication_year' => ['sometimes', 'integer', 'max:'.date('Y')],
             'abstract' => ['sometimes', 'nullable', 'string'],
-            'file' => ['sometimes', 'file', 'mimes:pdf'],
+            'file' => ['sometimes'],
         ];
     }
 }
