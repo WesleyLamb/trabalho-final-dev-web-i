@@ -88,7 +88,7 @@
             })
         });
     @endif
-    @if($action == 'create'))
+    @if($action == 'create')
         document.getElementById('salvar').addEventListener('click', function() {
             let data = {};
             data.id = document.getElementById('id').value;
