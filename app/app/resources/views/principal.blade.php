@@ -36,7 +36,7 @@
             </nav>
         </header>
 
-        <main class="container" style="display:flex; justify-content:center; position:relative; padding: 1rem; padding-top: 6rem; padding-bottom: 5rem; min-height: 100vh">
+        <main class="container" style="display:flex; justify-content:center; position:relative; padding: 1rem; padding-bottom: 5rem; min-height: 100vh">
             @yield('content')
         </main>
 
@@ -45,9 +45,11 @@
                 &copy; 2024 - Copyright:
                 <a class="text-white" href="{{route('home')}}">Portal TCC</a>
             </div>
+            @guest
             <div class="text-center p-3" style="height: 6vh; align-items:center; padding-bottom: 1rem;">
                 <a class="text-white" href="{{route('auth.login.view')}}">Acesso Restrito</a>
             </div>
+            @endguest
         </footer>
     </div>
 </body>

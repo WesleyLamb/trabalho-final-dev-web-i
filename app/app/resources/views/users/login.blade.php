@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="mx-auto form-login mt-5">
-            <form action="{{route('api.v1.auth.login')}}?redirect=/" method="POST">
+        <form action="{{route('api.v1.auth.login')}}?redirect=/" method="POST">
             @csrf
             <h3>Login</h3>
             <div class="form-group mb-3">
@@ -20,23 +20,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary mb-3">Login</button>
             </div>
-            <a class="text-black" href="{{route('auth.register.view')}}">Não tem cadastro?</a>
+            {{--  <a class="text-black" href="{{route('auth.register.view')}}">Não tem cadastro?</a>  --}}
         </form>
-
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $errors)
-                        <li>{{$errors}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{session('sucess')}}
-            </div>
-        @endif
     </div>
 @endsection
