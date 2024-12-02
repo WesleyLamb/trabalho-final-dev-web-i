@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         'as' => 'documents.'
     ], function() {
         Route::get('{id}/edit', [ViewDocumentController::class, 'edit'])->name('edit.view');
+        Route::get('create', [ViewDocumentController::class,'create'])->name('create.view');
         // Route::post('', [ViewDocumentController::class, 'store'])->name('store.view');
         // Route::group(['prefix' => '{id}'], function() {
         //     Route::put('', [ViewDocumentController::class, 'update'])->name('update.view');
@@ -63,7 +64,6 @@ Route::group([
     'as' => 'documents.'
 ], function() {
     Route::get('', [ViewDocumentController::class, 'index'])->name('catalog');
-    Route::get('create', [ViewDocumentController::class,'create'])->name('create'); // Não oficial, somente para trabalhar na view
     // Route::get('details', [ViewDocumentController::class, 'details'])->name('details'); //Não oficial, somente para trabalhar na view
     Route::group(['prefix' => '{id}'], function() {
         Route::get('', [ViewDocumentController::class, 'show'])->name('view');

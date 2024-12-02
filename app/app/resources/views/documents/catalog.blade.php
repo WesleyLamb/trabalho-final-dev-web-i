@@ -1,7 +1,10 @@
 @extends('principal')
 @section('content')
 <div class="w-100">
-    <h1>{{$title}}</h1>
+    <div class="d-flex justify-content-between">
+        <h1>{{$title}}</h1>
+        <a class="btn btn-outline-dark btn-rounded me-1" title="Criar Documento" href="{{ route('documents.create.view') }}" role="button" style="margin: 0.3rem"><i class="fa fa-file-circle-plus"></i></a>
+    </div>
     <p>Encontre aqui os documentos disponíveis para leitura.</p>
     <table id="documentsTable" class="display">
         <thead>
